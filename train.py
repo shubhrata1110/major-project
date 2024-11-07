@@ -39,7 +39,7 @@ class Train:
 
 
     def train_classifier(self):
-        data_dir=("data")
+        data_dir= "data"
         path=[os.path.join(data_dir,file) for file in os.listdir(data_dir)]
 
         faces=[]

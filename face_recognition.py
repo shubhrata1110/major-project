@@ -1,3 +1,4 @@
+import csv
 from tkinter import*
 from tkinter import ttk
 from PIL import Image,ImageTk
@@ -41,22 +42,22 @@ class Face_Recognition:
         b1_1=Button(f_lbl,text="Face Recognition",command=self.face_recog,cursor="hand2",font=("times new roman",18,"bold"),bg="white",fg="black")
         b1_1.place(x=365,y=620,width =200,height=60)
 
-    # =========================attendence==============================
+    # =========================attendance==============================
 
     def mark_attendance(self,i,r,n,d):
-        with open("abhishek.csv","r+",newline="\n") as f:
-            myDataList=f.readlines()
-            name_list=[]
-            for line in myDataList:
-                entry=line.split((","))
-                name_list.append(entry[0])
-            if((i not in name_list) and (r not in name_list) and (n not in name_list) and (d not in name_list)):    
-               now=datetime.now()
-               d1=now.strftime("%d/%m/%Y")
-               dtString=now.strftime("%H:%M:%S")
-               f.writelines(f"\n{i},{r},{n},{d},{dtString},{d1},Present")
+        with open("abhishek.csv", "r+", newline="") as f:
+            reader = csv.reader(f)
+            existing_entries = list(reader)
 
+            # Check if an entry with (i, r, n, d) already exists
+            if not any(row[:4] == [i, r, n, d] for row in existing_entries):
+                now = datetime.now()
+                d1 = now.strftime("%d/%m/%Y")
+                dtString = now.strftime("%H:%M:%S")
 
+                # Write the new attendance entry
+                writer = csv.writer(f)
+                writer.writerow([i, r, n, d, dtString, d1, "Present"])
 
     # ======================face recognition ===================
 
@@ -72,24 +73,24 @@ class Face_Recognition:
                 id,predict=clf.predict(gray_image[y:y+h,x:x+w])
                 confidence=int((100*(1-predict/300)))
 
-                conn=mysql.connector.connect(host="localhost",username="root",password="Abhi@99315",database="face_recognizer")
+                conn=mysql.connector.connect(host="localhost",user="root",password="@Abhiveer18",database="major", auth_plugin='mysql_native_password')
                 my_cursor=conn.cursor()
                 
                 my_cursor.execute("select Name from student where Student_id="+str(id))
                 n=my_cursor.fetchone()
-                n="+".join(n)
+                n = str(n)
 
                 my_cursor.execute("select Roll from student where Student_id="+str(id))
                 r=my_cursor.fetchone()
-                r="+".join(r)
+                r = str(r)
 
                 my_cursor.execute("select Dep from student where Student_id="+str(id))
                 d=my_cursor.fetchone() 
-                d="+".join(d)
+                d = str(d)
 
                 my_cursor.execute("select Student_id from student where Student_id="+str(id))
                 i=my_cursor.fetchone()
-                i="+".join(i) 
+                i = str(i)
 
                 if confidence>77:
                     cv2.putText(img,f"ID:{i}",(x,y-75),cv2.FONT_HERSHEY_COMPLEX,0.8,(255,255,255),3)

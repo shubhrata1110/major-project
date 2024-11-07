@@ -220,7 +220,7 @@ class Attendance:
       try:
         if len(mydata)<1:
           messagebox.showerror("No Data", "No Data found to export",parent=self.root)
-          return Fasle
+          return False
         fln=filedialog.asksaveasfilename(initialdir=os.getcwd(),title="Open CSV",filetypes=(("CSV File","*.csv"),("ALL File","*.*")),parent=self.root)
         with open(fln,mode="w",newline="") as myfile:
           exp_write=csv.writer(myfile,delimeter=",")

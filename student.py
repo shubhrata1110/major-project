@@ -348,7 +348,7 @@ class Student:
             messagebox.showerror("Error","All Fileds are required",parent=self.root)
         else:
             try:
-                conn=mysql.connector.connect(host="localhost",username="root",password="Abhi@99315",database="face_recognizer")
+                conn=mysql.connector.connect(host="localhost",user="root",password="@Abhiveer18",database="major", auth_plugin='mysql_native_password')
                 my_cursor=conn.cursor()
                 my_cursor.execute("insert into student values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(
                                                                                                            self.var_dep.get(),
@@ -373,11 +373,11 @@ class Student:
                 conn.close()
                 messagebox.showinfo("Success","Stduent details has been added Successfully", parent=self.root)
             except Exception as es:
-                messagebox.showerror("Error",f"Due To :{str(es)}",parent=self.root)
+                messagebox.showerror("Error",f"Due To 1:{str(es)}",parent=self.root)
 
     # =================================fetch data ===============================================
     def fetch_data(self):
-        conn=mysql.connector.connect(host="localhost",username="root",password="Abhi@99315",database="face_recognizer")
+        conn=mysql.connector.connect(host="localhost",user="root",password="@Abhiveer18",database="major", auth_plugin='mysql_native_password')
         my_cursor=conn.cursor()
         my_cursor.execute("select * from student")
         data=my_cursor.fetchall()
@@ -419,7 +419,7 @@ class Student:
             try:
                 Update=messagebox.askyesno("Update","Do you want to update this student dtails",parent=self.root)
                 if Update>0:
-                   conn=mysql.connector.connect(host="localhost",username="root",password="Abhi@99315",database="face_recognizer")
+                   conn=mysql.connector.connect(host="localhost",user="root",password="@Abhiveer18",database="major", auth_plugin='mysql_native_password')
                    my_cursor=conn.cursor()
                    my_cursor.execute("update student set Dep=%s,course=%s,Year=%s,Semester=%s,Name=%s,Division=%s,Roll=%s,Email=%s,Gender=%s,Dob=%s,Phone=%s,Address=%s,Teacher=%s,PhotoSample=%s where Student_id=%s",(
                       
@@ -447,7 +447,7 @@ class Student:
                 self.fetch_data()
                 conn.close() 
             except Exception as es:
-                messagebox.showerror("Error",f"Due To:{str(es)}",parent=self.root)
+                messagebox.showerror("Error",f"Due To 2:{str(es)}",parent=self.root)
 
     # delete function
     def delete_data(self):
@@ -457,7 +457,7 @@ class Student:
             try:
                 delete=messagebox.askyesno("Student Delete Page", "Do you want to delete this student",parent=self.root)
                 if delete>0:
-                    conn=mysql.connector.connect(host="localhost",username="root",password="Abhi@99315",database="face_recognizer")
+                    conn=mysql.connector.connect(host="localhost",user="root",password="@Abhiveer18",database="major", auth_plugin='mysql_native_password')
                     my_cursor=conn.cursor()
                     sql="delete from student where Student_id=%s"
                     val=(self.va_std_id.get(),)
@@ -471,7 +471,7 @@ class Student:
                 conn.close()
                 messagebox.showinfo("Delete","Successfully deleted student details",parent=self.root)        
             except Exception as es:
-                messagebox.showerror("Error",f"Due To:{str(es)}",parent=self.root)
+                messagebox.showerror("Error",f"Due To 3:{str(es)}",parent=self.root)
     #reset
     def reset_data(self):
         self.var_dep.set("Select Department")
@@ -496,11 +496,11 @@ class Student:
             messagebox.showerror("Error","All Fileds are required",parent=self.root)
         else:
             try:
-                conn=mysql.connector.connect(host="localhost",username="root",password="Abhi@99315",database="face_recognizer")
+                conn=mysql.connector.connect(host="localhost",user="root",password="@Abhiveer18",database="major", auth_plugin='mysql_native_password')
                 my_cursor=conn.cursor()
                 my_cursor.execute("select * from student")
                 myresult=my_cursor.fetchall()
-                id= 0
+                id=0
                 for x in myresult:
                     id+=1
                 my_cursor.execute("update student set Dep=%s,course=%s,Year=%s,Semester=%s,Division=%s,Roll=%s,Roll=%s,Gender=%s,Dob=%s,Email=%s,Phone=%s,Address=%s,Teacher=%s,PhotoSample=%s where Student_id=%s",(
@@ -559,7 +559,7 @@ class Student:
                 cv2.destroyAllWindows()
                 messagebox.showinfo("Result","Generating data sets completed!!!!")        
             except Exception as es:
-                messagebox.showerror("Error",f"Due To:{str(es)}",parent=self.root)
+                messagebox.showerror("Error",f"Due To 4:{str(es)}",parent=self.root)
 
 
 
