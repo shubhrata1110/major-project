@@ -28,36 +28,34 @@ class Attendance:
         self.var_atten_attendance=StringVar()
 
         #First Image
-        img=Image.open(r"college_images\girlbg.jpg")
-        img=img.resize((800,200),Image.ANTIALIAS)
+        img=Image.open(r"college_images\project4.png")
+        img=img.resize((180,180),Image.LANCZOS)
         self.photoimg=ImageTk.PhotoImage(img)
 
         f_lbl=Label(self.root,image=self.photoimg)
-        f_lbl.place(x=0,y=0,width=800,height=200)
-
-
+        f_lbl.place(x=0,y=0,width=500,height=180)
 
 
         #Second Image
-        img1=Image.open(r"college_images\fig-touch.jpg")
-        img1=img1.resize((800,200),Image.ANTIALIAS)
+        img1=Image.open(r"college_images\name.png")
+        img1=img1.resize((800,140),Image.LANCZOS)
         self.photoimg1=ImageTk.PhotoImage(img1)
 
         f_lbl=Label(self.root,image=self.photoimg1)
-        f_lbl.place(x=800,y=0 ,width=800,height=200)
+        f_lbl.place(x=480,y=5 ,width=800,height=140)
 
        
 
         #bg Image
-        img3=Image.open(r"college_images\boy-bg.jpg")
-        img3=img3.resize((1530,710),Image.ANTIALIAS)
+        img3=Image.open(r"college_images\img.png")
+        img3=img3.resize((1530,710),Image.LANCZOS)
         self.photoimg3=ImageTk.PhotoImage(img3)
 
         bg_img=Label(self.root,image=self.photoimg3)
-        bg_img.place(x=0,y=200 ,width=1530,height=710)
+        bg_img.place(x=0,y=190 ,width=1530,height=710)
 
-        title_lbl=Label(bg_img,text="Attendence Management System ",font=("times new roman",35,"bold"),bg="black",fg="white")
-        title_lbl.place(x=0,y=0,width=1530,height=54)
+        title_lbl=Label(bg_img,text="Attendence Management System ", font=("Baskerville Old Face", 30, "bold"), bg="white", fg="#4682B4")
+        title_lbl.place(x=0,y=0,width=1530,height=45)
 
         main_frame=Frame(bg_img,bd=2)
         main_frame.place(x=10,y=55,width=1500,height=600)
@@ -67,15 +65,15 @@ class Attendance:
         Left_frame=LabelFrame(main_frame,bd=2,relief=RIDGE,text="Student Attendance Details", font=("times new roman",12,"bold"))
         Left_frame.place(x=10, y=10, width=760, height=580)
 
-        img_left=Image.open(r"college_images\happypepole.jpg")
-        img_left=img_left.resize((720,130),Image.ANTIALIAS)
-        self.photoimg_left=ImageTk.PhotoImage(img_left)
-        
-        f_lbl=Label(Left_frame,image=self.photoimg_left)
-        f_lbl.place(x=5,y=0,width=720,height=130)
+        # img_left=Image.open(r"college_images\happypepole.jpg")
+        # img_left=img_left.resize((720,130),Image.LANCZOS)
+        # self.photoimg_left=ImageTk.PhotoImage(img_left)
+        #
+        # f_lbl=Label(Left_frame,image=self.photoimg_left)
+        # f_lbl.place(x=5,y=0,width=720,height=130)
 
         left_inside_frame=Frame(Left_frame,relief=RIDGE,bd=2,bg="white")
-        left_inside_frame.place(x=0,y=135,width=720,height=370)
+        left_inside_frame.place(x=5,y=0,width=720,height=130)
 
         #attendence id 
         attendanceId_label=Label(left_inside_frame,text="AttendanceId:",font=("times new roman",12,"bold"),bg="white")

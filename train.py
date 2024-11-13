@@ -14,28 +14,32 @@ class Train:
         self.root.geometry("1530x790+0+0")
         self.root.title("face Recogniton System")
 
-        title_lbl=Label(self.root,text="Train Data Set" , font=("times new roman",35,"bold"),bg="Black",fg="white")
+        title_lbl=Label(self.root,text="Train Data Set" , font=("Baskerville Old Face", 30, "bold"), bg="white", fg="#4682B4")
         title_lbl.place(x=0,y=0,width=1530,height=60)
 
-        img_top=Image.open(r"college_images\happypepole.jpg")
-        img_top=img_top.resize((1530,325),Image.ANTIALIAS)
-        self.photoimg_top=ImageTk.PhotoImage(img_top)
+        bg_image = Image.open(r"college_images\img.png").resize((1600, 900), Image.LANCZOS)
+        self.bg_photo = ImageTk.PhotoImage(bg_image)
+        bg_label = Label(self.root, image=self.bg_photo)
+        bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-        f_lbl=Label(self.root,image=self.photoimg_top)
-        f_lbl.place(x=0,y=55,width=1530,height=325)
+        gif_image = Image.open(r"college_images\project11.gif")
+        gif_photo = ImageTk.PhotoImage(gif_image)
+        gif_label = Label(self.root, image=gif_photo)
+        gif_label.image = gif_photo  # Keep a reference to avoid garbage collection
+        gif_label.pack(pady=(200, 20))
+
+        # 3rd - Text below the Lottie animation
+        text_label = Label(self.root, text="Click below to register yourself!", font=("Arial", 18), bg="white",
+                           fg="black")
+        text_label.pack()
 
         #============== button==========================
-        b1_1=Button(self.root,text="TRAIN DATA",command=self.train_classifier,cursor="hand2",font=("times new roman",30,"bold"),bg="black",fg="white")
-        b1_1.place(x=0, y=380,width =1530,height=60)
+        b1_1=Button(self.root,text="TRAIN DATA",command=self.train_classifier,cursor="hand2",font=("times new roman",18,"bold"),bg="white",fg="black")
+        b1_1.place(x=630, y=430,width =250,height=60)
 
 
 
-        img_bottom=Image.open(r"college_images\manypepople.jpg")
-        img_bottom=img_bottom.resize((1530,325),Image.ANTIALIAS)
-        self.photoimg_bottom=ImageTk.PhotoImage(img_bottom)
 
-        f_lbl=Label(self.root,image=self.photoimg_bottom)
-        f_lbl.place(x=0,y=440,width=1530,height=325)
 
 
     def train_classifier(self):

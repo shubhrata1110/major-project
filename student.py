@@ -28,47 +28,33 @@ class Student:
         self.var_address=StringVar()
         self.var_teacher=StringVar()
 
+        # First Image
+        img = Image.open(r"college_images\project4.png")
+        img = img.resize((180, 180), Image.LANCZOS)
+        self.photoimg = ImageTk.PhotoImage(img)
 
-        #First Image
-        img=Image.open(r"college_images\cybercheck.jpg")
-        img=img.resize((500,130),Image.ANTIALIAS)
-        self.photoimg=ImageTk.PhotoImage(img)
+        f_lbl = Label(self.root, image=self.photoimg)
+        f_lbl.place(x=0, y=0, width=500, height=180)
 
-        f_lbl=Label(self.root,image=self.photoimg)
-        f_lbl.place(x=0,y=0,width=500,height=130)
+        # Second Image
+        img1 = Image.open(r"college_images\name.png")
+        img1 = img1.resize((800, 140), Image.LANCZOS)
+        self.photoimg1 = ImageTk.PhotoImage(img1)
 
-
-
-
-        #Second Image
-        img1=Image.open(r"college_images\bgirl.jpg")
-        img1=img1.resize((500,130),Image.ANTIALIAS)
-        self.photoimg1=ImageTk.PhotoImage(img1)
-
-        f_lbl=Label(self.root,image=self.photoimg1)
-        f_lbl.place(x=500,y=0,width=500,height=130)
+        f_lbl = Label(self.root, image=self.photoimg1)
+        f_lbl.place(x=480, y=5, width=800, height=140)
 
 
-
-
-
-        #Third Image
-        img2=Image.open(r"college_images\fig-touch.jpg")
-        img2=img2.resize((500,130),Image.ANTIALIAS)
-        self.photoimg2=ImageTk.PhotoImage(img2)
-
-        f_lbl=Label(self.root,image=self.photoimg2)
-        f_lbl.place(x=1000,y=0,width=550,height=130)
 
         #Bg Image
-        img3=Image.open(r"college_images\boy-bg.jpg")
-        img3=img3.resize((1530,710),Image.ANTIALIAS)
+        img3=Image.open(r"college_images\img.png")
+        img3=img3.resize((1530,710),Image.LANCZOS)
         self.photoimg3=ImageTk.PhotoImage(img3)
 
         bg_img=Label(self.root,image=self.photoimg3)
         bg_img.place(x=0,y=130,width=1530,height=710)
 
-        title_lbl=Label(bg_img,text="Student Management System" , font=("times new roman",35,"bold"),bg="black",fg="white")
+        title_lbl=Label(bg_img,text="Student Management System" , font=("Baskerville Old Face", 30, "bold"), bg="white", fg="#4682B4")
         title_lbl.place(x=0,y=0,width=1530,height=53)
 
         main_frame=Frame(bg_img,bd=2)
@@ -79,16 +65,10 @@ class Student:
         Left_frame=LabelFrame(main_frame,bd=2,relief=RIDGE,text="Student Details", font=("times new roman",12,"bold"))
         Left_frame.place(x=10, y=10, width=760, height=580)
 
-        img_left=Image.open(r"college_images\happypepole.jpg")
-        img_left=img_left.resize((720,130),Image.ANTIALIAS)
-        self.photoimg_left=ImageTk.PhotoImage(img_left)
-
-        f_lbl=Label(Left_frame,image=self.photoimg_left)
-        f_lbl.place(x=5,y=0,width=720,height=130)
 
         # current course
         current_course_frame=LabelFrame(Left_frame,bd=2,relief=RIDGE,text="Current Course Information", font=("times new roman",12,"bold"))
-        current_course_frame.place(x=5, y=135, width=720, height=150)
+        current_course_frame.place(x=5, y=5, width=720, height=130)
         
         # Department
         dep_label=Label(current_course_frame,text="Department",font=("times new roman",12,"bold"))
@@ -254,18 +234,11 @@ class Student:
 
         Right_frame=LabelFrame(main_frame,bd=2,relief=RIDGE,bg="white",text="Student Details", font=("times new roman",12,"bold"))
         Right_frame.place(x=780, y=10, width=760, height=580)
-
-        img_right=Image.open(r"college_images\manypepople.jpg")
-        img_right=img_right.resize((720,130),Image.ANTIALIAS)
-        self.photoimg_right=ImageTk.PhotoImage(img_right)
-
-        f_lbl=Label(Right_frame,image=self.photoimg_right)
-        f_lbl.place(x=5,y=0,width=720,height=130)
        
 
         # =============Search System==================
         Search_frame=LabelFrame(Right_frame,bd=2,bg="white",relief=RIDGE,text="Search Bar System", font=("times new roman",12,"bold"))
-        Search_frame.place(x=5, y=135, width=710, height=70)
+        Search_frame.place(x=5, y=0, width=710, height=70)
 
         search_label=Label(Search_frame,text="Search By:",font=("times new roman",15,"bold"), bg = "black",fg="white")
         search_label.grid(row=0,column=0,padx=10,pady=5,sticky=W)

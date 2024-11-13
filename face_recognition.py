@@ -9,6 +9,10 @@ from datetime import datetime
 import cv2
 import os
 import numpy as np
+# from lottie import LottieAnimation
+from tkinterweb import HtmlFrame
+import tkinter as tk
+
 
 
 class Face_Recognition:
@@ -21,26 +25,58 @@ class Face_Recognition:
         title_lbl=Label(self.root,text="FACE RECOGNITION",font=("times new roman",35,"bold"),bg="Black",fg="White")
         title_lbl.place(x=0,y=0,width=1530,height=55)
 
+        # # Load the GIF image
+        # self.gif_image = Image.open(r"college_images\project11.gif")
+        #
+        # # Initialize a label to display the GIF
+        # self.gif_label = Label(self.root)
+        # self.gif_label.pack(pady=(55, 10))
+        #
+        # # Add the text label below the GIF
+        # text_label = tk.Label(self.root, text="This is some text below the GIF",
+        #                            font=("times new roman", 18, "bold"))
+        # text_label.pack(pady=(10, 10))
+        #
+        # # Start the animation
+        # self.animate_gif(0)
 
-        # 1st image
-        img_top=Image.open(r"college_images\bgirl.jpg")
-        img_top=img_top.resize((650,700),Image.ANTIALIAS)
-        self.photoimg_top=ImageTk.PhotoImage(img_top)
+        # 1st - Background Image
+        bg_image = Image.open(r"college_images\img.png").resize((1600, 900), Image.LANCZOS)
+        self.bg_photo = ImageTk.PhotoImage(bg_image)
+        bg_label = Label(self.root, image =self.bg_photo)
+        bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-        f_lbl=Label(self.root,image=self.photoimg_top)
-        f_lbl.place(x=0,y=55,width=650,height=700)
+        gif_image = Image.open(r"college_images\project11.gif")
+        gif_photo = ImageTk.PhotoImage(gif_image)
+        gif_label = Label(self.root, image=gif_photo)
+        gif_label.image = gif_photo  # Keep a reference to avoid garbage collection
+        gif_label.pack(pady=(200,20))
 
-        #2nd image
-        img_bottom=Image.open(r"college_images\cybercheck.jpg")
-        img_bottom=img_bottom.resize((950,700),Image.ANTIALIAS)
-        self.photoimg_bottom=ImageTk.PhotoImage(img_bottom)
+        # 3rd - Text below the Lottie animation
+        text_label = Label(self.root, text="Click below to register yourself!", font=("Arial", 18), bg="white", fg="black")
+        text_label.pack()
 
-        f_lbl=Label(self.root,image=self.photoimg_bottom)
-        f_lbl.place(x=650,y=55,width=950,height=700)
+        # Button below the text
+        b1_1 = Button(self.root, text="Face Recognition", command=self.face_recog, cursor="hand2",
+                      font=("times new roman", 18, "bold"), bg="white", fg="black")
+        b1_1.pack(pady=(10, 0))
 
-        #button
-        b1_1=Button(f_lbl,text="Face Recognition",command=self.face_recog,cursor="hand2",font=("times new roman",18,"bold"),bg="white",fg="black")
-        b1_1.place(x=365,y=620,width =200,height=60)
+    # def animate_gif(self, frame):
+    #     # Get the next frame of the GIF
+    #     self.gif_image.seek(frame)
+    #
+    #     # Convert the current frame to PhotoImage
+    #     gif_photo = ImageTk.PhotoImage(self.gif_image)
+    #
+    #     # Update the label with the new frame
+    #     self.gif_label.config(image=gif_photo)
+    #     self.gif_label.image = gif_photo  # Keep a reference
+    #
+    #     # Update to the next frame, looping back to 0 if the end is reached
+    #     next_frame = (frame + 1) % self.gif_image.n_frames
+    #     self.root.after(100, self.animate_gif, next_frame)
+
+
 
     # =========================attendance==============================
 
